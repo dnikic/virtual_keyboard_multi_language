@@ -398,20 +398,14 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
             ));
         break;
       case VirtualKeyboardKeyAction.SwithLanguage:
-        actionKey = GestureDetector(
-            onTap: () {
-              setState(() {
-                customLayoutKeys.switchLanguage();
-              });
-            },
-            child: Container(
-              height: double.infinity,
-              width: double.infinity,
-              child: Icon(
-                Icons.language,
-                color: textColor,
-              ),
-            ));
+        actionKey = Container(
+          height: double.infinity,
+          width: double.infinity,
+          child: Icon(
+            Icons.language,
+            color: textColor,
+          ),
+        );
         break;
     }
 
@@ -423,6 +417,12 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
               isShiftEnabled = !isShiftEnabled;
             });
           }
+        }
+
+        if (key.action == VirtualKeyboardKeyAction.SwithLanguage) {
+          setState(() {
+            customLayoutKeys.switchLanguage();
+          });
         }
 
         _onKeyPress(key);
