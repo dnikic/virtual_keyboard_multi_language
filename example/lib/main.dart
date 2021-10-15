@@ -63,10 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SwitchListTile(
               title: Text(
-                'Keyboard Type = ' +
-                    (isNumericMode
-                        ? 'VirtualKeyboardType.Numeric'
-                        : 'VirtualKeyboardType.Alphanumeric'),
+                'Keyboard Type = ' + (isNumericMode ? 'VirtualKeyboardType.Numeric' : 'VirtualKeyboardType.Alphanumeric'),
               ),
               value: isNumericMode,
               onChanged: (val) {
@@ -85,12 +82,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   //width: 500,
                   textColor: Colors.white,
                   textController: _controllerText,
-                  //customLayoutKeys: _customLayoutKeys,                  
-                  defaultLayouts: [VirtualKeyboardDefaultLayouts.Arabic,VirtualKeyboardDefaultLayouts.English],
+                  //customLayoutKeys: _customLayoutKeys,
+                  defaultLayouts: [VirtualKeyboardDefaultLayouts.Arabic, VirtualKeyboardDefaultLayouts.English],
                   //reverseLayout :true,
-                  type: isNumericMode
-                      ? VirtualKeyboardType.Numeric
-                      : VirtualKeyboardType.Alphanumeric,
+                  type: isNumericMode ? VirtualKeyboardType.Numeric : VirtualKeyboardType.Alphanumeric,
                   postKeyPress: _onKeyPress),
             )
           ],
@@ -117,6 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
           break;
         case VirtualKeyboardKeyAction.Shift:
           shiftEnabled = !shiftEnabled;
+          break;
+        case VirtualKeyboardKeyAction.Close:
           break;
         default:
       }

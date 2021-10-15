@@ -118,6 +118,8 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
           break;
         case VirtualKeyboardKeyAction.Shift:
           break;
+        case VirtualKeyboardKeyAction.Close:
+          break;
         default:
       }
     }
@@ -137,10 +139,8 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
       final myTextLength = myText.length;
       textController!.text = newText;
       textController!.selection = textSelection.copyWith(
-        baseOffset: min(
-            textSelection.start + myTextLength, textController!.text.length),
-        extentOffset: min(
-            textSelection.start + myTextLength, textController!.text.length),
+        baseOffset: min(textSelection.start + myTextLength, textController!.text.length),
+        extentOffset: min(textSelection.start + myTextLength, textController!.text.length),
       );
     }
   }
@@ -223,9 +223,7 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
     textController = widget.textController;
     width = widget.width;
     type = widget.type;
-    customLayoutKeys = widget.customLayoutKeys ??
-        VirtualKeyboardDefaultLayoutKeys(
-            widget.defaultLayouts ?? [VirtualKeyboardDefaultLayouts.English]);
+    customLayoutKeys = widget.customLayoutKeys ?? VirtualKeyboardDefaultLayoutKeys(widget.defaultLayouts ?? [VirtualKeyboardDefaultLayouts.English]);
     preKeyPress = widget.preKeyPress;
     postKeyPress = widget.postKeyPress;
     height = widget.height;
@@ -273,9 +271,7 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
   List<Widget> _rows() {
     // Get the keyboard Rows
     List<List<VirtualKeyboardKey>> keyboardRows =
-        type == VirtualKeyboardType.Numeric
-            ? _getKeyboardRowsNumeric()
-            : _getKeyboardRows(customLayoutKeys);
+        type == VirtualKeyboardType.Numeric ? _getKeyboardRowsNumeric() : _getKeyboardRows(customLayoutKeys);
 
     // Generate keyboard row.
     List<Widget> rows = List.generate(keyboardRows.length, (int rowNum) {
@@ -337,9 +333,7 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
         height: height / customLayoutKeys.activeLayout.length,
         child: Center(
             child: Text(
-          alwaysCaps
-              ? key.capsText!
-              : (isShiftEnabled ? key.capsText! : key.text!),
+          alwaysCaps ? key.capsText! : (isShiftEnabled ? key.capsText! : key.text!),
           style: textStyle,
         )),
       ),
@@ -358,9 +352,7 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
             onLongPress: () {
               longPress = true;
               // Start sending backspace key events while longPress is true
-              Timer.periodic(
-                  Duration(milliseconds: _virtualKeyboardBackspaceEventPerioud),
-                  (timer) {
+              Timer.periodic(Duration(milliseconds: _virtualKeyboardBackspaceEventPerioud), (timer) {
                 if (longPress) {
                   _onKeyPress(key);
                 } else {
@@ -393,6 +385,17 @@ class _VirtualKeyboardState extends State<VirtualKeyboard> {
           Icons.keyboard_return,
           color: textColor,
         );
+        break;
+      case VirtualKeyboardKeyAction.Close:
+        actionKey = Ink(
+            width: double.infinity,
+            height: double.infinity,
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.red, border: Border.all(color: Colors.white, width: 2.5)),
+            child: Icon(
+              Icons.close,
+              color: textColor,
+            ));
         break;
       case VirtualKeyboardKeyAction.SwithLanguage:
         actionKey = GestureDetector(

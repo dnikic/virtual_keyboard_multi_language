@@ -53,13 +53,26 @@ const List<List> _defaultEnglishLayout = [
     '8',
     '9',
     '0',
+    VirtualKeyboardKeyAction.Close,
   ],
   // Row 2
   const ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', VirtualKeyboardKeyAction.Backspace],
   // Row 3
-  const ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', VirtualKeyboardKeyAction.Return],
+  const ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\''],
   // Row 4
-  const [VirtualKeyboardKeyAction.Shift, 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', VirtualKeyboardKeyAction.Shift],
+  const [
+    VirtualKeyboardKeyAction.Shift,
+    'z',
+    'x',
+    'c',
+    'v',
+    'b',
+    'n',
+    'm',
+    ',',
+    '.',
+    '/',
+  ],
   // Row 5
   const [
     VirtualKeyboardKeyAction.SwithLanguage,
@@ -84,11 +97,12 @@ const List<List> _defaultArabicLayout = [
     '8',
     '9',
     '0',
+    VirtualKeyboardKeyAction.Close,
   ],
   // Row 2
   const ['ض', 'ص', 'ث', 'ق', 'ف', 'غ', 'ع', 'ه', 'خ', 'ح', 'د', VirtualKeyboardKeyAction.Backspace],
   // Row 3
-  const ['ش', 'س', 'ي', 'ب', 'ل', 'ا', 'ت', 'ن', 'م', 'ك', 'ط', VirtualKeyboardKeyAction.Return],
+  const ['ش', 'س', 'ي', 'ب', 'ل', 'ا', 'ت', 'ن', 'م', 'ك', 'ط'],
   // Row 4
   const ['ذ', 'ئ', 'ء', 'ؤ', 'ر', 'لا', 'ى', 'ة', 'و', '.', 'ظ', VirtualKeyboardKeyAction.Shift],
   // Row 5
@@ -113,13 +127,14 @@ const List<List> _defaultRussianLayout = [
     '8',
     '9',
     '0',
+    VirtualKeyboardKeyAction.Close,
   ],
   // Row 2
 
-  const ['а,' 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', VirtualKeyboardKeyAction.Backspace],
+  const ['а,', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', VirtualKeyboardKeyAction.Backspace],
   // Row 3
 
-  const ['й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т' ';', '\'', VirtualKeyboardKeyAction.Return],
+  const ['й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', ';', '\''],
   // Row 4
 
   const [
@@ -136,10 +151,10 @@ const List<List> _defaultRussianLayout = [
     'ь',
     'э',
     'ю',
-    'я' ',',
+    'я',
+    ',',
     '.',
     '/',
-    VirtualKeyboardKeyAction.Shift
   ],
   // Row 5
   const [
